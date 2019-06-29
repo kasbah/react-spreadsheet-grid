@@ -47,6 +47,11 @@ class SpreadsheetGridScrollWrapper extends React.PureComponent {
     }
 
     componentWillReceiveProps(newProps) {
+        if (newProps.columnWidthValues) {
+            this.setState(state => {
+                return {columnWidthValues: {...state.columnWidthValues, ...newProps.columnWidthValues}};
+            })
+        }
         if (this.state.blurCurrentFocus !== newProps.blurCurrentFocus) {
             this.setState({
                 blurCurrentFocus: newProps.blurCurrentFocus
